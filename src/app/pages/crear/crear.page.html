@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button  slot="start" (click)="mostrarMenu()" expand="block" fill="clear" shape="round">
+      <ion-icon slot="start" name="menu-outline" color="success" ></ion-icon>
+    </ion-button>
+    <ion-title>crear</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form class="margin">
+    <ion-item>
+      <ion-label  position="stacked"> Precio</ion-label>
+      <ion-input type="number" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Numero pasajeros</ion-label>
+      <ion-input type="number" placeholder=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Donde vas?</ion-label>
+      
+    </ion-item>
+    <ion-item>
+      <img src="../../../assets/mapa.jpg" >
+    </ion-item>
+    <ion-button shape="round" style="margin-top: 10%;" type="submit" expand="full" fill="solid"  color="success" >
+      Crear Viaje
+    </ion-button>
+    
+  </form>
+
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button  slot="start" (click)="mostrarMenu()" expand="block" fill="clear" shape="round">
+      <ion-icon slot="start" name="menu-outline" color="success" ></ion-icon>
+    </ion-button>
+    <ion-title>login</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="margin">
+    <form  #formulario="ngForm" (ngSubmit)="onSubmit()" >
+      <ion-item class="back" >
+        <ion-label position="floating">Ingrese su nombre</ion-label>
+        <ion-input type="text" placeholder="Nombre" name="nombre" [(ngModel)]="usuario.nombre" required ></ion-input>
+      </ion-item>
+      <ion-item class="back" >
+        <ion-label position="floating">Ingrese su password</ion-label>
+        <ion-input type="password" placeholder="******" name="password" [(ngModel)]="usuario.password" ></ion-input>
+      </ion-item>
+      <ion-button shape="round" type="submit" expand="full" fill="solid"  color="success" >
+        Enviar
+      </ion-button>
+    </form>
+  </ion-card>
+  
+
+
+
+</ion-content>
+

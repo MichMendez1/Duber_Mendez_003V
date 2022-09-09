@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    
+      <ion-button  slot="start" (click)="mostrarMenu()" expand="block" fill="clear" shape="round">
+        <ion-icon slot="start" name="menu-outline" color="success" ></ion-icon>
+      </ion-button>
+    <ion-title>detalle</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item style="margin-top:25% ;" >
+    <ion-label>Nombre chofer: {{viajes.nombre}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Precio: {{viajes.precio}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>Pasajeros:</ion-label>
+  </ion-item>
+  <ion-item *ngFor="let p of viajes.pasajeros" >
+    <ion-label >{{p}}</ion-label>
+  </ion-item>
+
+</ion-content>
