@@ -28,11 +28,10 @@ export class AppComponent {
       icon: 'clipboard-outline',name: 'Mis Viajes',redirecTo: '/misviajes'
     }, 
     {
+      icon: 'cloud-download-outline',name: 'Api',redirecTo: '/api'
+    },{
       icon: 'log-out-outline',name: 'Salir',redirecTo: '/inicio'
     },
-
-    
-
   ]
 
 }

@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button  slot="start" (click)="mostrarMenu()" expand="block" fill="clear" shape="round">
+      <ion-icon slot="start" name="menu-outline" color="success" ></ion-icon>
+    </ion-button>
+    <ion-title>api</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngFor="let personaje of personajes; let i=index" >
+    <ion-card>
+      <ion-card-header style="text-align:center ;"  >
+        
+        <ion-card-title>{{i}}. {{personaje.name}} </ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="text-align:center ;" >
+        <img style="width:50%;" src="{{personaje.image}}" >
+      </ion-card-content>
+    </ion-card>
+    
+  </ion-list>
+
+</ion-content>

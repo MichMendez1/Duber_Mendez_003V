@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
-import {Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { UsuarioService, Usuario } from 'src/app/services/usuario.service';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,82 +16,75 @@ import {Router } from '@angular/router'
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  handlerMessage = '';
-  roleMessage = '';
+  formulariosLogin: FormGroup;
+  usuarios: Usuario[] = [];
 
-  constructor(private menuController:MenuController,private alertController: AlertController, private router:Router ) { }
-
-  ngOnInit() {
+  constructor(
+    private menuController: MenuController,
+    private alertController: AlertController,
+    private router: Router,
+    private registroService: UsuarioService,
+    private fb: FormBuilder
+  ) {
+    this.formulariosLogin = this.fb.group({
+      'correo':new FormControl("",Validators.required),
+      'password':new FormControl("",Validators.required)
+    })
   }
 
-  ru={
-    nombre:"Michael",
-    password:"1234"
+  ngOnInit() {}
+
+  mostrarMenu() {
+    this.menuController.open('first');
+  }
+
+  async Ingresar(){
+    var f = this.formulariosLogin.value;
+    var a = 0;
+    this.registroService.getUsuarios().then(datos=>{
+      this.usuarios=datos;
+      if(datos.length == 0){
+        console.log("entre")
+        this.alertMsg()
+        return null;
+      }
+
+      for (let obj of this.usuarios){
+        if(obj.mailUsuario == f.correo && obj.passUsuario == f.password){
+          a=1;
+          this.Bienvenida(obj.nomUsuario)
+          console.log('ingresado');
+          localStorage.setItem("ingresado",'true');
+          this.router.navigate(['/somos'])
+        }
+      }
+      console.log(a)
+      if(a==0){
+        this.alertMsg();
+      }
+    });  
+  }
+
+  async Bienvenida(msg){
+    const alert =await this.alertController.create({
+      header:"Bienvenido",
+      message:`Bienvenido ${msg}`,
+      buttons:['Aceptar']
+    });
+    await alert.present();
+    return;
+
   }
   
 
-
-  mostrarMenu(){
-    this.menuController.open("first")
-  }
-
-  usuario={
-    nombre:"",
-    password:""
-  }
-
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      header: 'Login Exitoso',
-      message:"Bienvenido " + this.usuario.nombre ,
-      buttons: [
-        {
-          text: 'OK',
-          role: 'accept',
-          
-          handler: () => {
-            this.handlerMessage = 'OK';
-          },
-        },
-      ],
+  async alertMsg(){
+    const alert =await this.alertController.create({
+      header:"Error..",
+      message:'!Los datos ingresados no son correctos',
+      buttons:['Aceptar']
     });
-
     await alert.present();
-    this.router.navigate(['/somos'])
+    return;
+
   }
-
-
-  async failAlert() {
-    const alert = await this.alertController.create({
-      header: 'Problema al logiar',
-      message:"Usuario o contraseña incorrecta vuelva a intentarlo",
-      buttons: [
-        {
-          text: 'OK',
-          role: 'accept',
-          
-          handler: () => {
-            this.handlerMessage = 'OK';
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-    
-  }
-
-  onSubmit(){
-    console.log("entre")
-    console.log(this.usuario)
-    if(this.usuario.nombre.toLowerCase() == this.ru.nombre.toLowerCase() && this.usuario.password.toLowerCase() == this.ru.password.toLowerCase()){
-      this.presentAlert()
-    }else{
-      this.failAlert()
-    }
-    
-  }
-
 }
-
-

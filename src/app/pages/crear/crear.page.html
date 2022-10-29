@@ -9,23 +9,23 @@
 
 <ion-content>
 
-  <form class="margin">
+  <form #formulario="ngForm" (ngSubmit)="addDatos()" class="margin">
     <ion-item>
-      <ion-label  position="stacked"> Precio</ion-label>
-      <ion-input type="number" placeholder=""></ion-input>
+      <ion-label  position="floating"> Precio</ion-label>
+      <ion-input type="number" name="precio" [(ngModel)]="newDato.precio" placeholder=""></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Numero pasajeros</ion-label>
-      <ion-input type="number" placeholder=""></ion-input>
+      <ion-label position="floating">Numero pasajeros</ion-label>
+      <ion-input type="number" name="pasajeros" [(ngModel)]="newDato.numPasajeros" placeholder=""></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Donde vas?</ion-label>
-      
+      <ion-label position="floating">Donde vas?</ion-label>
+      <ion-input type="text" name="Destino" [(ngModel)]="newDato.direccion" placeholder=""></ion-input>
     </ion-item>
     <ion-item>
-      <img src="../../../assets/mapa.jpg" >
+      <img style="margin-top:2% ;" src="../../../assets/mapa.jpg" >
     </ion-item>
-    <ion-button shape="round" style="margin-top: 10%;" type="submit" expand="full" fill="solid"  color="success" >
+    <ion-button (click)="addDatos()" shape="round" style="margin-top: 10%;" type="submit" expand="full" fill="solid"  color="success" >
       Crear Viaje
     </ion-button>
     
