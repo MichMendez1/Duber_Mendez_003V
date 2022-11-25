@@ -7,12 +7,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="height:100% ;" >
 
-  <form #formulario="ngForm" (ngSubmit)="addDatos()" class="margin">
+  <form #formulario="ngForm" class="margin">
     <ion-item>
       <ion-label  position="floating"> Precio</ion-label>
-      <ion-input type="number" name="precio" [(ngModel)]="newDato.precio" placeholder=""></ion-input>
+      <ion-input type="number" name="precio" [(ngModel)]="newDato.precio" placeholder="" requiered ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Numero pasajeros</ion-label>
@@ -22,10 +22,11 @@
       <ion-label position="floating">Donde vas?</ion-label>
       <ion-input type="text" name="Destino" [(ngModel)]="newDato.direccion" placeholder=""></ion-input>
     </ion-item>
-    <ion-item>
-      <img style="margin-top:2% ;" src="../../../assets/mapa.jpg" >
-    </ion-item>
-    <ion-button (click)="addDatos()" shape="round" style="margin-top: 10%;" type="submit" expand="full" fill="solid"  color="success" >
+    <ion-button (click)="getLocation()" shape="round" style="margin-top: 10%; margin-bottom: 5%; width: 50%; margin-left: 25%; " type="submit" expand="full" fill="solid"  color="success" >
+      Buscar Direccion
+    </ion-button>
+      <div class="map" style="width:100%; height: 300px; " id="map"></div>
+    <ion-button (click)="addDatos()" shape="round" style="margin-top: 10%; margin-bottom: 10%;" type="submit" expand="full" fill="solid"  color="success" >
       Crear Viaje
     </ion-button>
     

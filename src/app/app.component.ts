@@ -4,6 +4,7 @@ interface Componente{
   icon:string;
   name:string;
   redirecTo:string;
+  
 }
 
 @Component({
@@ -29,9 +30,14 @@ export class AppComponent {
     }, 
     {
       icon: 'cloud-download-outline',name: 'Api',redirecTo: '/api'
-    },{
-      icon: 'log-out-outline',name: 'Salir',redirecTo: '/inicio'
+    },
+    {
+      icon: 'log-out-outline',name: 'Salir',redirecTo: '/salir'
     },
   ]
+
+
+
+  
 
 }

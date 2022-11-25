@@ -7,8 +7,8 @@
     </ion-header>
     <ion-content>
       <ion-list>
-      <ion-menu-toggle *ngFor="let c of componentes" >
-        <ion-item [routerLink] ="c.redirecTo" detail =True >
+      <ion-menu-toggle *ngFor="let c of componentes; index as i ; last as isLast" >
+        <ion-item #notLast [routerLink] ="c.redirecTo" detail =True >
           <ion-icon slot="start" [name]="c.icon" color='success' ></ion-icon>
           {{c.name}}
         </ion-item>
@@ -27,4 +27,6 @@
   <ion-router-outlet id="main" > 
 
   </ion-router-outlet>
+
+  
 </ion-app>
