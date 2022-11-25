@@ -18,7 +18,7 @@ export class ApiService {
     headers = headers.set('Access-Control-Allow-Origin', '*')
     headers = headers.set('Access-Control-Allow-Headers', 'Content-Type')
     headers = headers.set('Access-Control-Allow-Methods', 'GET, POST')
-    return (this.httpClient.get<any>("https://rickandmortyapi.com/api/character",{headers:headers}))
+    return (this.httpClient.get<any>("https://rickandmortyapi.com/api/character",{headers:headers}))     
   }
 
 
