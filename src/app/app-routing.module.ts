@@ -30,7 +30,7 @@ const routes: Routes = [
     canActivate:[IngresadoGuard]
   },
   {
-    path: 'crear',
+    path: 'crear', 
     loadChildren: () => import('./pages/crear/crear.module').then( m => m.CrearPageModule),
   canActivate:[IngresadoGuard]
   },
